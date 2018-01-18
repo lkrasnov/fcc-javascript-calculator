@@ -1,0 +1,16 @@
+.header {
+  padding-bottom: 1rem;
+  border-bottom: .05rem solid #e5e5e5;
+}
+
+.calculator-container {
+  margin: auto;
+  width: 600px;
+  padding: 30px 0;
+}
+
+.footer {
+  padding-top: 1.5rem;
+  color: #777;
+  border-top: .05rem solid #e5e5e5;
+}
