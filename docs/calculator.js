@@ -1,5 +1,17 @@
-var result = 0;
+var Operations = {
+    ADD: "+",
+    SUB: "-",
+    MULT: "*",
+    DIV: "/",
+    PER: "%"
+};
+
+var result = null;
+var opA = null;
+var opB = null;
+var opp = null;
 var input = "";
+
 $(document).ready(function() {
     updateDisplay("0");
 });
@@ -72,6 +84,16 @@ $("#eq").click(function() {
 });
 
 $("#plus").click(function() {
+    if (input == "" && result != null) {
+        opA = result;
+    } else {
+        if (opA == null) {
+            opA = parseFloat(input);
+        }
+        
+        input = "";
+    }
+    opp = Operations.ADD;
     (this).blur();
 });
 
@@ -92,6 +114,12 @@ $("#per").click(function() {
 });
 
 $("#ac").click(function() {
+    result = null;
+    opA = null;
+    opB = null;
+    opp = null;
+    input = "";
+    updateDisplay("0");
     (this).blur();
 });
 
