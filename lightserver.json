@@ -1,0 +1,11 @@
+{
+    "serve": "docs",
+    "port": 8000,
+    "bind": "localhost",
+    "watchexps": [
+      "**/*.js, index.html # # reload",
+      "*.css # # reloadcss"
+    ],
+    "interval": 500,
+    "delay": 0
+  }
