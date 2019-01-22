@@ -1,0 +1,25 @@
+{
+  "name": "fcc-javascript-calculator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "light-server -c lightserver.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lkrasnov/fcc-javascript-calculator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lkrasnov/fcc-javascript-calculator/issues"
+  },
+  "homepage": "https://github.com/lkrasnov/fcc-javascript-calculator#readme",
+  "dependencies": {
+    "light-server": "^2.6.0"
+  }
+}
