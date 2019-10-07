@@ -1,7 +1,17 @@
-var result = 0;
-var input = "";
+var input = "0";
+var x = null;
+var y = null;
+var ops = {
+    ADDITION: "plus",
+    SUBTRACTION: "sub",
+    MULTIPLICATION: "mult",
+    DIVISION: "div",
+    PERCENTAGE: "per"
+};
+var currentOp = null;
+
 $(document).ready(function() {
-    updateDisplay("0");
+    updateDisplay(input);
 });
 
 $("#zero").click(function() {
@@ -68,30 +78,70 @@ $("#dec").click(function() {
 });
 
 $("#eq").click(function() {
+    prepareY();
+    switch(currentOp){
+        case ops.ADDITION:
+            x = x + y;
+            break;
+        case ops.SUBTRACTION:
+            x = x - y;
+            break;
+        case ops.MULTIPLICATION:
+            x = x * y;
+            break;
+        case ops.DIVISION:
+            x = x / y;
+            break;
+        default:
+    }
+    clearInput();
+    updateDisplay(x);
     (this).blur();
 });
 
 $("#plus").click(function() {
+    setOperation(ops.ADDITION);
+    prepareX();
+    clearY();
+    clearInput();
     (this).blur();
 });
 
 $("#minus").click(function() {
+    setOperation(ops.SUBTRACTION);
+    prepareX();
+    clearY();
+    clearInput();
     (this).blur();
 });
 
 $("#mult").click(function() {
+    setOperation(ops.MULTIPLICATION);
+    prepareX();
+    clearY();
+    clearInput();
     (this).blur();
 });
 
 $("#div").click(function() {
+    setOperation(ops.DIVISION);
+    prepareX();
+    clearY();
+    clearInput();
     (this).blur();
 });
 
 $("#per").click(function() {
+    setOperation(ops.PERCENTAGE);
     (this).blur();
 });
 
 $("#ac").click(function() {
+    clearInput();
+    clearX();
+    clearY();
+    clearOperation();
+    updateDisplay(input);
     (this).blur();
 });
 
@@ -104,8 +154,12 @@ $("#ce").click(function() {
 function numInput(num) {
     var maxLength = input.includes(".") ? 11 : 10;
     if (input.length < maxLength) {
-        if (!(num == "0" && input == "")) {
-            input += num;
+        if (!(num == "0" && input == "0")) {
+            if (input == "0") {
+                input = num;
+            } else {
+                input += num;
+            }
             updateDisplay(input);
         }
     }
@@ -113,4 +167,36 @@ function numInput(num) {
 
 function updateDisplay(val) {
     $("#disp").html(val);
+}
+
+function prepareX() {
+    if (x === null) {
+        x = Number(input);
+    }
+}
+
+function prepareY() {
+    if (y === null) {
+        y = Number(input);
+    }
+}
+
+function clearY() {
+    y = null;
+}
+
+function clearX() {
+    x = null;
+}
+
+function clearInput() {
+    input = "0";
+}
+
+function clearOperation() {
+    currentOp = null;
+}
+
+function setOperation(operation) {
+    currentOp = operation;
 }
